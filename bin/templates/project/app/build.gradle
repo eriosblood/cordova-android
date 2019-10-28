@@ -183,6 +183,7 @@ task cdvPrintProps {
 
 android {
     defaultConfig {
+        multiDexEnabled true
         versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
         applicationId privateHelpers.extractStringFromManifest("package")
 
@@ -254,10 +255,11 @@ android {
         }
     }
     
-    dexOptions { 
-       incremental true 
-       javaMaxHeapSize "4g" 
-    } 
+  dexOptions {
+         incremental = true;
+         preDexLibraries = false
+         javaMaxHeapSize "4g" 
+}
     
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
